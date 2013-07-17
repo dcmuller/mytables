@@ -6,7 +6,12 @@
 #' 
 #' @details
 #' ...
-freq_pct <- function(varlist, crossvar, varlabs) {
-  
+freq_pct <- function(varlist, crossvar, varlabs, useNA = "no") {
+  tablist <- lapply(X=varlist, FUN=table, crossvar, useNA = useNA)
+  tab <- NULL
+  for (i in 1:length(tablist)) {
+    tab <- rbind(tab, tablist[[i]])
+  }
+  tab
 }
 
